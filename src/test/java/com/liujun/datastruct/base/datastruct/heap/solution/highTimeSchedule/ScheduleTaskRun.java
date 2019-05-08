@@ -12,7 +12,7 @@ public class ScheduleTaskRun {
   public static void main(String[] args) {
 
     // 30秒后执行当前任务
-    long runTime = System.currentTimeMillis() + 1 * 10 * 1000;
+    long runTime = System.currentTimeMillis() + 1* 10 * 1000;
 
     Runnable runTask =
         () -> {
@@ -20,6 +20,17 @@ public class ScheduleTaskRun {
           System.out.println("时间点为:" + System.currentTimeMillis());
         };
 
+      long runTime2 = System.currentTimeMillis() + 2 * 10 * 1000;
+
+      Runnable runTask2 =
+              () -> {
+                  System.out.println("当前任务被执行2");
+                  System.out.println("时间点为2:" + System.currentTimeMillis());
+              };
+
     MySchedule.INSTANCE.delayRun(runTime, runTask);
+    MySchedule.INSTANCE.delayRun(runTime2, runTask2);
+    MySchedule.INSTANCE.runSchedu();
+
   }
 }

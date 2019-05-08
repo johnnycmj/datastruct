@@ -26,8 +26,11 @@ public class RunSchedule {
           long startTime = System.currentTimeMillis();
           System.out.println("开始" + startTime);
           Thread.sleep(needTime);
+          task.run();
           long endTime = System.currentTimeMillis();
           System.out.println("结束" + (endTime - startTime));
+          // 继续执行下一个
+          MySchedule.INSTANCE.runSchedu();
         } catch (InterruptedException e) {
           e.printStackTrace();
         }
@@ -36,6 +39,5 @@ public class RunSchedule {
       }
     }
 
-    task.run();
   }
 }

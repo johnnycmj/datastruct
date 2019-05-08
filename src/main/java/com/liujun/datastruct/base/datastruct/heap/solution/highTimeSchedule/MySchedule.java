@@ -26,13 +26,27 @@ public class MySchedule {
             return 0;
           });
 
+    /**
+     * 添加定时任务
+     * @param time
+     * @param run
+     */
   public void delayRun(long time, Runnable run) {
-
     // 将任务加入队列
     queue.offer(new ScheduleBusi(time, run));
-    // 从任务中获取第一时间，然后当前定时器设置在runtime后唤醒进行执行
-    ScheduleBusi schedQueue = queue.poll();
-    // long runTime = schedQueue.getRunTime()-currTime;
-    RunSchedule.INSTANCE.runTask(schedQueue.getRunTime(), run);
+
+  }
+
+    /**
+     * 启动定时器
+      */
+  public void runSchedu() {
+      // 从任务中获取第一时间，然后当前定时器设置在runtime后唤醒进行执行
+      ScheduleBusi schedQueue = queue.poll();
+      // long runTime = schedQueue.getRunTime()-currTime;
+      if(schedQueue != null) {
+          System.out.println("取出执行任务" + schedQueue.getRunTime());
+          RunSchedule.INSTANCE.runTask(schedQueue.getRunTime(), schedQueue.getRunable());
+      }
   }
 }
