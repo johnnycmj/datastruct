@@ -44,7 +44,9 @@ public class LruLinked<T> {
 
 
     public void add(T t) {
+        // 查找这个节点
         Node node = findPreNode(t);
+        // 如果链表里面没有这个节点数据
         if(node == null) {
             if(size < capacity - 1) {
                 // 说明还有容量,则直接添加在头部
@@ -64,7 +66,6 @@ public class LruLinked<T> {
             cut.item = null;
 
             addFirst(t);
-
         }
     }
 

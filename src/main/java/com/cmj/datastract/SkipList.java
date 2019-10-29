@@ -1,4 +1,4 @@
-package com.cmj.datastract.linked;
+package com.cmj.datastract;
 
 import java.util.Random;
 

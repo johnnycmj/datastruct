@@ -125,6 +125,7 @@ public class CustomArray<T> {
     public T remove(int index) {
         rangeCheck(index);
         T oldData = elementData(index);
+        // 需要移动的位数
         int numMoved = size - index - 1;
         if (numMoved > 0)
             System.arraycopy(data, index+1, data, index,
