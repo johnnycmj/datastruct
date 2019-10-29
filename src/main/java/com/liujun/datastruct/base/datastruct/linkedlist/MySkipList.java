@@ -33,10 +33,10 @@ public class MySkipList {
     /** 存储的数据值信息 */
     private int value;
 
-    /** 跳表的索引层 */
+    /** 后续链子节点 */
     private Node[] forward = new Node[MAX_LEVEL];
 
-    /** 当前节点的最大层级 */
+    /** 当前节点的最高层级 */
     private int maxLevel;
 
     @Override
@@ -55,35 +55,37 @@ public class MySkipList {
    * @param value 待插入的值
    */
   public void insert(int value) {
-    // 1,获得跳表的层级
+    // 1,获得跳表的层级,那就将这个节点加到第1级到底level级的索引中
     int level = this.getRandomLevel();
 
     Node nodeNode = new Node();
     nodeNode.value = value;
     nodeNode.maxLevel = level;
 
-    Node[] nodeIndex = new Node[level];
+    // 索引,总共有level层索引
+    Node[] update = new Node[level];
 
-    // 初始化节点，为头节点
+    // 初始化节点，每一层的索引第一个都为头节点
     for (int i = 0; i < level; i++) {
-      nodeIndex[i] = head;
+      update[i] = head;
     }
 
-    Node inserNode = head;
+    Node p = head;
 
     // 找到当前节点在各层中的位置, 从顶层开始遍历
     for (int i = level - 1; i >= 0; i--) {
       // 找到当前节点在当前层中的位置
-      while (inserNode.forward[i] != null && inserNode.forward[i].value < value) {
-        inserNode = inserNode.forward[i];
+      while (p.forward[i] != null && p.forward[i].value < value) {
+        p = p.forward[i];
       }
-      nodeIndex[i] = inserNode;
+      // 更新这一层插入的节点
+      update[i] = p;
     }
 
     // 将当前的节点，插入到多层索引链表中
     for (int i = 0; i < level; i++) {
-      nodeNode.forward[i] = nodeIndex[i].forward[i];
-      nodeIndex[i].forward[i] = nodeNode;
+      nodeNode.forward[i] = update[i].forward[i];
+      update[i].forward[i] = nodeNode;
     }
 
     if (currMaxLevel < level) {

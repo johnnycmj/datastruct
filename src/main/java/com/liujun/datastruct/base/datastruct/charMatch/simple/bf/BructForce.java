@@ -32,7 +32,8 @@ public class BructForce {
 
     // 主串的遍历
     while (srcStartIndex < srcArrays.length) {
-      // 如果遍历到尾都没有找到，则结束查找
+      // 如果遍历到尾都没有找到，则结束查找。如果模式串长度为 m，主串长度为 n，那在主串中，就会有 n-m+1 个长度为 m 的子串，
+      // 我们只需要暴力地对比这 n-m+1 个子串与模式串，就可以找出主串与模式串匹配的子串。
       if (srcStartIndex + findArrays.length > srcArrays.length) {
         break;
       }

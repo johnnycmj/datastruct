@@ -84,6 +84,7 @@ public class HuffmanCode {
         CodeNode left = nodePriQueue.poll();
         CodeNode right = nodePriQueue.poll();
 
+        // 构建父节点
         CodeNode sumNode = new CodeNode();
         sumNode.frequence = left.frequence + right.frequence;
         sumNode.data = (char) ((int) left.data + (int) right.data);
@@ -95,6 +96,7 @@ public class HuffmanCode {
         left.parent = sumNode;
         right.parent = sumNode;
 
+        // 在将构建好的父节点放到小顶堆中
         nodePriQueue.offer(sumNode);
       }
 

@@ -83,7 +83,7 @@ public class Graph {
 
     while (queue.size() != 0) {
       int w = queue.poll();
-      // System.out.println("队列的值为:" + w);
+       System.out.println("出对w:" + w);
       // 遍历顶点链
       for (int i = 0; i < adj[w].size(); i++) {
         // 遍历当前顶点关联的顶点
@@ -94,6 +94,7 @@ public class Graph {
           prev[q] = w;
           System.out.println("当前的q:" + q);
           System.out.println(Arrays.toString(prev));
+          // 找到结果，退出
           if (q == t) {
             print(prev, s, t);
             return;

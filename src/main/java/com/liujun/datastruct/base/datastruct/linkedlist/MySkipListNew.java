@@ -170,4 +170,15 @@ public class MySkipListNew {
 
     return level;
   }
+
+  public static void main(String args[]) {
+    MySkipListNew skipList = new MySkipListNew();
+    skipList.insert(1);
+    skipList.insert(3);
+    skipList.insert(6);
+    skipList.insert(7);
+    skipList.insert(2);
+    skipList.insert(5);
+    skipList.printTreeNode();
+  }
 }

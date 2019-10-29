@@ -44,6 +44,7 @@ public class Solution {
    */
   public List<ScopeBusi> countScope() {
 
+    // 取出一个最小的结束节点
     ScopeBusi scopeStartTmp = scopeList.poll();
 
     List<ScopeBusi> result = new ArrayList<>();
@@ -53,8 +54,10 @@ public class Solution {
 
       ScopeBusi endBusi = scopeList.peek();
 
+      // 开始节点大于最小结束节点,则肯定是不想交区间
       if (endBusi.getStart() >= scopeStartTmp.getEnd()) {
         result.add(endBusi);
+        // 将最小区间移到找到的第一个不想交区间
         scopeStartTmp = endBusi;
         scopeList.poll();
       } else {

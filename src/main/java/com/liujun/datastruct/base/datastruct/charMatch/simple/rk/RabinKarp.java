@@ -13,14 +13,6 @@ import java.util.Map;
  * @date 2018/12/08
  */
 public class RabinKarp {
-
-  //  private static final char[] RK_STR = {
-  //    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-  // 'S',
-  //    'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-  // 'l',
-  //    'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
-  //  };
   private static final char[] RK_STR = {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
     't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
@@ -107,6 +99,7 @@ public class RabinKarp {
 
     // 1,进行模式串的计算
     for (int i = countArrs.length - 1; i >= 0; i--) {
+      // 26^n
       double value = Math.pow(SCALE, CHAR_MAP.get(countArrs[i]));
       rsp += value;
     }

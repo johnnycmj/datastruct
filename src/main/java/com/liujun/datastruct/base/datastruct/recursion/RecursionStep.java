@@ -9,7 +9,7 @@ package com.liujun.datastruct.base.datastruct.recursion;
  *
  * <p>递归公式就是f(n) = f(n-1) + f(n-2)
  *
- * <p>中止条件为f(n)=1或者f(n)=2,两阶有两种走法么,常数
+ * <p>中止条件为f(n)=1或者f(n)=2,两阶有两种走法
  *
  * @author liujun
  * @version 0.0.1

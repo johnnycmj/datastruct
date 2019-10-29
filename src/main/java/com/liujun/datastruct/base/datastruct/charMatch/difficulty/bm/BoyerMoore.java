@@ -20,14 +20,18 @@ public class BoyerMoore {
    * @return 生成的模式串所对应的hashCode
    */
   private int[] generateCode(char[] modChar) {
+    // 散列表
     int[] bchashs = new int[BYTE_SIZE];
 
+    // 初始化散列表
     for (int i = 0; i < BYTE_SIZE; i++) {
       bchashs[i] = -1;
     }
 
     for (int i = 0; i < modChar.length; i++) {
-      bchashs[modChar[i]] = i;
+      // 计算modChar[i]的ascii码
+      int ascii = (int)modChar[i];
+      bchashs[ascii] = i;
     }
 
     return bchashs;
@@ -54,13 +58,16 @@ public class BoyerMoore {
 
     while (i <= n - m) {
       int j;
+      // 模式串从后往前匹配
       for (j = m - 1; j >= 0; j--) {
+        // 当不相等，匹配不成功，坏字符对应模式串中的下标是j
         if (srcArrays[i + j] != findArrays[j]) {
           break;
         }
       }
 
       if (j < 0) {
+        // 匹配成功，返回主串与模式串第一个匹配的字符的位置
         return i;
       }
       // 1,srcArrays[i + j]标识当前坏字符串的位置

@@ -37,7 +37,7 @@ public class HashOpenAddressing {
     boolean putRsp = false;
 
     int index = hash(key);
-    // 检查此位置是否已经存值
+    // 检查此位置是否已经存值，当不存在或者key值相同覆盖
     if (data[index] == null || data[index].key == key) {
       data[index] = new Data();
       data[index].key = key;

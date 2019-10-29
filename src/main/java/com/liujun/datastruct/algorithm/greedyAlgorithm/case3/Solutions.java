@@ -60,9 +60,10 @@ public class Solutions {
 
           MoneyBusi busiNew = new MoneyBusi(busi.getValue(), 1, busi.getMemory());
           resultMemory.add(busiNew);
-
+          // 数量减1
           busi.setNum(busi.getNum() - 1);
 
+          // 如果数量还有就把它加回队列中
           if (busi.getNum() > 0) {
             moneyQueue.offer(busi);
           }

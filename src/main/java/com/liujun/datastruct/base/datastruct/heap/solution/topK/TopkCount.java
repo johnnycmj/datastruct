@@ -21,10 +21,13 @@ public class TopkCount {
   public int[] topk(int[] data, int k) {
     PriorityQueue<Integer> queue = new PriorityQueue<>(k);
 
+    // 遍历data数据
     for (int i = 0; i < data.length; i++) {
+      // 当堆中个数小于k时，直接加到堆中
       if (queue.size() < k) {
         queue.offer(data[i]);
       } else {
+        // 从堆中取出
         int value = queue.peek();
         // 如果发现数据比堆顶元素大，则加入到小顶堆中
         if (data[i] > value) {
